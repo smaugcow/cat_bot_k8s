@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catbot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: catbot
+  template:
+    metadata:
+      labels:
+        app: catbot
+    spec:
+      imagePullSecrets:
+      - name: yandex-registry
+      containers:
+      - name: catbot
+        image: cr.yandex/<REGISTRY_ID>/cat_bot:1.0
